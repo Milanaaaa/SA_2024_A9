@@ -5,7 +5,7 @@ import json
 def callback(ch, method, properties, body):
     message = json.loads(body)
     message['message'] = message['message'].upper()
-    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost', port=5672))
     channel = connection.channel()
     channel.queue_declare(queue='screamed_messages')
     channel.basic_publish(
@@ -13,7 +13,7 @@ def callback(ch, method, properties, body):
     connection.close()
 
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
+connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost', port=5672))
 channel = connection.channel()
 channel.queue_declare(queue='filtered_messages')
 channel.basic_consume(queue='filtered_messages',
