@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  publish_service:
+    build:
+      context: .
+    container_name: publish_service
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    command: ["python", "services/publish_service.py"]
+
+  filter_service:
+    build:
+      context: .
+    container_name: filter_service
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    command: ["python", "services/filter_service.py"]
+
+  screaming_service:
+    build:
+      context: .
+    container_name: screaming_service
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    command: ["python", "services/screaming_service.py"]
+
+  rest_api_service:
+    build:
+      context: .
+    container_name: rest_api_service
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    command: ["python", "services/rest_api_service.py"]
+    ports:
+      - "5000:5000"  # Expose the REST API
