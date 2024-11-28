@@ -5,10 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY services/ ./services/
-COPY build.sh .
-
-RUN chmod +x build.sh
+COPY . .
 
 EXPOSE 5000
 
