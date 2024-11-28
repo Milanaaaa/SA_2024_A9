@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  publish_service:
+    build:
+      context: .
+    container_name: publish_service
+    command: ["python", "services/publish_service.py"]
+
+  filter_service:
+    build:
+      context: .
+    container_name: filter_service
+    command: ["python", "services/filter_service.py"]
+
+  screaming_service:
+    build:
+      context: .
+    container_name: screaming_service
+    command: ["python", "services/screaming_service.py"]
+
+  rest_api_service:
+    build:
+      context: .
+    container_name: rest_api_service
+    command: ["python", "services/rest_api_service.py"]
+    ports:
+      - "5000:5000"  # Expose the REST API
