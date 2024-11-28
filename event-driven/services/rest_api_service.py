@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 def send_to_queue(message):
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='localhost', port=5672)
+        pika.ConnectionParameters(host='rabbitmq', port=5672)
     )
 
     channel = connection.channel()
