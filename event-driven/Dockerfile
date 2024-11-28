@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["./build.sh"]
+CMD ["python", "services/filter_service.py"]

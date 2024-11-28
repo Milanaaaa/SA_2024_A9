@@ -7,7 +7,7 @@ def callback(ch, method, properties, body):
     message['message'] = message['message'].upper()
 
     with pika.BlockingConnection(
-            pika.ConnectionParameters(host='localhost', port=5672)
+            pika.ConnectionParameters(host='rabbitmq', port=5672)
     ) as connection:
         channel = connection.channel()
 
@@ -22,7 +22,7 @@ def callback(ch, method, properties, body):
 
 def main():
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='localhost', port=5672)
+        pika.ConnectionParameters(host='rabbitmq', port=5672)
     )
 
     channel = connection.channel()
