@@ -25,4 +25,4 @@ services:
     container_name: rest_api_service
     command: ["python", "services/rest_api_service.py"]
     ports:
-      - "5000:5000"  # Expose the REST API
+      - "5000:5000"
