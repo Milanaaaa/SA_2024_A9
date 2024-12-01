@@ -1,6 +1,6 @@
 # Hands-on: Message Brokers
 
-This project contains two folders, `event-driven` and `pipes-and-filters` each for their respective approauch.
+This project contains two folders, `event-driven` and `pipes-and-filters` each for their respective approach.
 Despite the differences in approaches, the building and usage process is almost identical.
 
 ## 🔨 Build process
@@ -20,11 +20,11 @@ After building, you will have access to new endpoint: `localhost:5000/send`, to 
 
 ### The Event Driven Approach
 
-The **RabbitMQ** as a message broker provides incredebly robust dashboard for tracking all messages and how much resources they use that can be accessed at `http://127.0.0.1:15672/` and rather insightful logs in docker.
+The **RabbitMQ** as a message broker provides incredibly robust dashboard for tracking all messages and how much resources they use that can be accessed at `http://127.0.0.1:15672/` and rather insightful logs in docker.
 
 ### The Pipes And Filters Approach
 
-Unlike rabbit, it can't show off as much information, but you can still track which specific service was more likely responsible for the failure by getting back information on how far into the system your message went with json response that will look something like this:
+Unlike **RabbitMQ**, it can't show off as much information, but you can still track which specific service was more likely responsible for the failure by getting back information on how far into the system your message went with json response that will look something like this:
 
 ```json
 {
