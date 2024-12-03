@@ -40,3 +40,59 @@ Unlike **RabbitMQ**, it can't show off as much information, but you can still tr
   "status": "Message forwarded"
 }
 ```
+
+
+# Report
+Team 4
+Team members: 
+ * Evgeniy Anisov
+ * Roman Pogrebnyak
+ * Milana Sirozhova
+ * Mikhail Kalinin
+ * Emil Gainullin
+## Overview
+
+This report compares the performance of two architectures: an event-driven system using RabbitMQ and a Python pipes-and-filters model. Both systems process messages through filtering, transforming to uppercase, and email message publication.
+
+## Test Summary
+
+- **Environment**: Docker Containers
+- **Metrics**: Measured time performance, CPU/memory usage.
+## Results
+
+### Time Behavior
+
+- **Event-Driven**: 
+  - Higher latency due to network overhead.
+
+  - Average response time: ` 0.0266051 sec`.
+
+- **Pipes-and-Filters**:
+  - Lower latency with in-memory processing.
+  - Average response time: ` 0.0175616 sec`.
+
+### Resource Utilization
+
+- **Event-Driven**:
+  - Higher CPU and memory usage due to distributed processing.
+  - Notable network overhead.
+
+- **Pipes-and-Filters**:
+  - Lower resource usage, limited to a single process.
+
+### Memory & CPU
+
+- **Event-Driven**:
+Memory Usage: 233.18MB
+CPU Usage: 0.07% 
+
+- **Pipes-and-Filters**:
+Memory Usage: 93.92MB 
+CPU Usage: 0.007% 
+## Conclusion
+
+- **Event-Driven** is better for scalable, distributed systems but adds latency and resource costs.
+- **Pipes-and-Filters** offers faster processing with lower resources for simpler tasks.
+
+---
+
